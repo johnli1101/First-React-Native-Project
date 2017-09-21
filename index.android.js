@@ -1,104 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+//code for android goes in here only
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Image
-} from 'react-native';
+//import a library to help create a Component
+// React library - knows how a component should behave / knows
+//      how to take a bunch of ocmponents and make them work together
+import React from 'react';
 
-export default class new_project extends Component {
-  constructor(props) {
-     super(props);
-     this.state = {text: ''};
-   }
+// React Native library - portal to the mobile device (aka rendering)
+//      take components and place it on the screen and default core for components
+// Import destructing to import the text tag in the components
 
-  render() {
-    let pic = {
-      uri: 'https://previews.123rf.com/images/flybird163/flybird1631211/flybird163121100148/16611277-hello-world-title-written-with-chalk-on-blackboard-Stock-Photo.jpg'
-    };
-    let pic2 = {
-      uri: 'https://cdn.programiz.com/sites/tutorial2program/files/hello-world.jpg'
-    };
-    let pic3 = {
-      uri: 'https://i.ytimg.com/vi/zecueq-mo4M/maxresdefault.jpg'
-    };
+import { Text, AppRegistry } from 'react-native';
+
+//import header component (list the path to the file from the project root)
+import Header from './src/components/header';
+
+//no file gets access to global files in other javascript libraries in EA6
+//  version of javascript so only imports to access them (think of c++ include
+//  .h files)
+
+// Create a Component
+// each file can only have one component
+//component - a widget that produces some text or shape that renders onto the
+//        screen of our mobile device
+//      components are javascript functions
+const App = () => { //App component
     return (
-      <View style={{padding: 10}}>
-        <TextInput
-          style={{height: 40}}
-          placeholder="Type here to translate!"
-          onChangeText={(text) => this.setState({text})}
-        />
-        <Text style={{padding: 10, fontSize: 42}}>
-          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-        </Text>
-      </View>
-      /*
-      <View style={{
-        flex: 1,
-        flexDirection:'column',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <Image source={pic} style={{width: 100, height:100}}/>
-        <Image source={pic2} style={{width: 100, height:100}}/>
-        <Image source={pic3} style={{width: 100, height:100}}/>
-      </View>
-      */
-      /*
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-      */
+        //this tells react to render some text to the device
+        // this is dialect of javascript called JSX (similar to HTML)
+        // follows the same semantics as HTML
+        // turns jsx to javscript (basically a mask over function calls for simplicity purposes)
+        // this is how to call the header component by making a self closing tag
+        //  Since we don't need to put anyhting between the tags we just close it with /> 
+        <Header />
     );
-  }
-}
+};
 
-const myStyles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  red: {
-    color: 'red',
-  },
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('new_project', () => new_project);
+// Render it to the device
+//Take the component and show it to the screen
+//only the root component uses the app registry basically marking it as the root component
+AppRegistry.registerComponent('new_project', () => App);
+//need to register at least one component to return
+//first argument is project name in this case new_project
+// second argument is the name of the first component to render so in this case App
