@@ -9,10 +9,11 @@ import React from 'react';
 //      take components and place it on the screen and default core for components
 // Import destructing to import the text tag in the components
 
-import { Text, AppRegistry } from 'react-native';
+import { Text, AppRegistry, View } from 'react-native';
 
 //import header component (list the path to the file from the project root)
 import Header from './src/components/header';
+import AlbumList from './src/components/AlbumList'
 
 //no file gets access to global files in other javascript libraries in EA6
 //  version of javascript so only imports to access them (think of c++ include
@@ -30,8 +31,16 @@ const App = () => { //App component
         // follows the same semantics as HTML
         // turns jsx to javscript (basically a mask over function calls for simplicity purposes)
         // this is how to call the header component by making a self closing tag
-        //  Since we don't need to put anyhting between the tags we just close it with /> 
-        <Header />
+        //  Since we don't need to put anyhting between the tags we just close it with />
+        // props - passing data into a child component ex.) passing index.js -> header.js
+        //      or passing arguemtns into child components
+        //headerText is the prop passed into header.js
+        //NEED TO ADD FLEX: 1 TO EXPAND TO FILL THE ENTIRE COMPONENT SO THAT YOU
+        //  CAN SCROLL PROPERLY
+        <View style={{ flex: 1 }} >
+            <Header headerText={'Albums'} />
+            <AlbumList />
+        </View>
     );
 };
 
